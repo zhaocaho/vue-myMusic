@@ -1,0 +1,10 @@
+// 颜色
+$icon: #7e6a6c;
+$color-em: #333333;
+
+// 字体图标位置
+@mixin iconPos($size: 0.2rem) {
+  text-align: center;
+  color: $icon;
+  font-size: $size;
+}
