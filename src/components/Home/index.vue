@@ -2,8 +2,6 @@
   <section>
     <z-logo></z-logo>
     <z-header></z-header>
-
-    1
   </section>
 </template>
 
