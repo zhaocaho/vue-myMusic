@@ -3,11 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import './plugins/element.js'
+import './plugins/vant.js'
 
 // 样式
 import '@/assets/css/globle.scss'
-import 'element-ui/lib/theme-chalk/index.css'
+import 'vant/lib/index.css'
 
 Vue.config.productionTip = false
 // 在Vue原型中加入$http属性为axios

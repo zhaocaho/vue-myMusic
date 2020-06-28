@@ -1,6 +1,5 @@
 <template>
   <article id="app">
-    <!-- 路由占位符 -->
     <router-view></router-view>
   </article>
 </template>
@@ -9,4 +8,4 @@
 export default {}
 </script>
 
-<style lang="scss" scoped></style>
+<style></style>

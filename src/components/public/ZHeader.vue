@@ -1,7 +1,9 @@
 <template>
   <section :class="[this.$style.sec, 'z-header']">
     <!-- 折叠标签 -->
-    <span class="el-icon-s-unfold"></span>
+    <span>
+      <van-icon name="wap-nav" />
+    </span>
     <div>
       <router-link to="/home" tag="span">我的</router-link>
       <router-link to="/find" tag="span">发现</router-link>
@@ -12,7 +14,9 @@
       <span>云村</span>
       <span>视频</span> -->
     </div>
-    <i class="el-icon-search"></i>
+    <i>
+      <van-icon name="search" />
+    </i>
   </section>
 </template>
 
