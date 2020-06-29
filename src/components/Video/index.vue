@@ -9,7 +9,7 @@
 import ZLogo from '@/components/public/ZLogo.vue'
 import ZHeader from '@/components/public/ZHeader.vue'
 export default {
-  name: 'video',
+  name: 'Video',
   components: {
     ZLogo,
     ZHeader

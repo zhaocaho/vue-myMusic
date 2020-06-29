@@ -1,11 +1,11 @@
 <template>
-  <section :class="[this.$style.sec, 'z-header']">
-    <div :class="this.$style.nav">
+  <section :class="this.$style.sec">
+    <div :class="[this.$style.nav, 'z-header']">
       <!-- 折叠标签 -->
       <span>
         <van-icon name="wap-nav" @click="toggleUserCenter" />
       </span>
-      <div>
+      <div :style="{ color: color }">
         <router-link to="/home" tag="span">我的</router-link>
         <router-link to="/find" tag="span">发现</router-link>
         <router-link to="/cloud" tag="span">云村</router-link>
@@ -72,6 +72,12 @@ export default {
     toggleSearch() {
       this.searchVisible = true
     }
+  },
+  props: {
+    color: {
+      type: String,
+      default: '#333333'
+    }
   }
 }
 </script>
@@ -108,11 +114,11 @@ export default {
       justify-content: space-between;
       align-items: center;
       font-size: 0.16rem;
+      // color: $color-em;
       span {
         // width: 0.3rem;
         // background-color: red;
         width: 40px;
-        color: $color-em;
       }
     }
     i {

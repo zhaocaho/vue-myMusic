@@ -1,35 +1,40 @@
 <template>
-  <section>
-    <z-logo></z-logo>
-    <z-header></z-header>
+  <section class="home">
+    <z-logo :color="'white'"></z-logo>
+    <z-header color="white"></z-header>
+    <panel></panel>
   </section>
 </template>
 
 <script>
 import ZLogo from '@/components/public/ZLogo.vue'
 import ZHeader from '@/components/public/ZHeader.vue'
+import Panel from '@/base/Panel.vue'
 export default {
   name: 'Home',
   components: {
     ZLogo,
-    ZHeader
+    ZHeader,
+    Panel
+  },
+  data() {
+    return {}
   },
   created() {
     // this.getData()
   },
-  methods: {
-    // getData() {
-    //   console.log('1')
-    //   this.$http
-    //     .get('/captcha/sent', {
-    //       params: { phone: 131888888888 }
-    //     })
-    //     .then(result => {
-    //       console.log(result)
-    //     })
-    // }
-  }
+  mounted() {
+    // this.$refs.child.vertical = true
+  },
+  methods: {}
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.home {
+  background-color: #1e1e1e;
+  .panel {
+    margin-top: 0.5rem;
+  }
+}
+</style>

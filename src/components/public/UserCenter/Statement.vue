@@ -1,12 +1,13 @@
 <template>
   <section :class="[this.$style.state, 'statement']">
-    我是声明
+    做一个自己的音乐播放器
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Statement'
+  name: 'Statement',
+  components: {}
 }
 </script>
 

@@ -1,11 +1,14 @@
 <template>
   <section :class="[this.$style.userCenter, 'user-center']">
-    <statement></statement>
-    我是用户中心
+    <panel>
+      <statement></statement>
+      我是用户中心
+    </panel>
   </section>
 </template>
 
 <script>
+import Panel from '@/base/Panel.vue'
 import Statement from './Statement.vue'
 export default {
   name: 'UserCenter',
@@ -13,6 +16,7 @@ export default {
     return {}
   },
   components: {
+    Panel,
     Statement
   }
 }
