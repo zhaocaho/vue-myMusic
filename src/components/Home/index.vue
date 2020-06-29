@@ -10,6 +10,8 @@
 import ZLogo from '@/components/public/ZLogo.vue'
 import ZHeader from '@/components/public/ZHeader.vue'
 import Panel from '@/base/Panel.vue'
+import { mapActions } from 'vuex'
+import * as types from 'store/mutation-types.js'
 export default {
   name: 'Home',
   components: {
@@ -22,11 +24,17 @@ export default {
   },
   created() {
     // this.getData()
+    this.bannerList(1)
   },
   mounted() {
     // this.$refs.child.vertical = true
   },
-  methods: {}
+  methods: {
+    ...mapActions('find', {
+      bannerList: types.BANNER_LISTS
+    })
+  },
+  computed: {}
 }
 </script>
 
