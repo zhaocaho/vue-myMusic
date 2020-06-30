@@ -1,28 +1,56 @@
 import * as types from 'store/mutation-types.js'
 import API from '@/api'
-import axios from 'axios'
+import { SUCCESS, useAxios } from '@/assets/js/common.js'
+import { Notify } from 'vant'
 
-const state = {}
-const mutations = {}
-const actions = {}
-const getters = {}
-// 获取轮播图
-actions[types.BANNER_LISTS] = ({ commit }, n) => {
-  console.log('执行了')
-  axios
-    .get(API.find.BANNER_LIST, { params: { type: n } })
-    .then(result => {
-      commit(types.BANNER_LISTS, result)
-    })
-    .catch(err => {
-      console.log(err)
-    })
+const state = {
+  bannerList: []
 }
-//
+const mutations = {}
+const actions = {
+  async [types.BANNER_LISTS]({ dispatch, rootState, commit }) {
+    const data = {
+      type: rootState.platform
+    }
+    const result = await useAxios(API.find.BANNER_LIST, data)
+    // console.log(result)
+    if (SUCCESS === 200) {
+      const bannerList = result.data.banners
+      commit(types.BANNER_LISTS, bannerList)
+    } else {
+      Notify('网络错误')
+    }
+  }
+}
+const getters = {}
+
+// mutations
+// 轮播图赋值
 mutations[types.BANNER_LISTS] = (state, result) => {
   state.bannerList = result
   console.log(state.bannerList)
 }
+// actions
+// 获取轮播图
+// actions[types.BANNER_LISTS] = ({ commit }, n) => {
+//   console.log('执行了')
+//   axios
+//     .get(API.find.BANNER_LIST, { params: { type: n } })
+//     .then(result => {
+//       commit(types.BANNER_LISTS, result)
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// }
+// actions[types.BANNER_LISTS] = ({ dispatch, rootState, commit }) => {
+//   // console.log(rootState)  对象的解构赋值不需要按顺序，数组的需要按顺序
+//   const data = {
+//     type: rootState.platform
+//   }
+//   const result = useAxios(API.find.BANNER_LIST, data, SUCCESS)
+//   console.log(result)
+// }
 export default {
   namespaced: true,
   state,
@@ -43,3 +71,12 @@ export default {
 //                         bannerList(n) {
 //                             this.$store.dispatch(`find/${types.BANNER_LISTS}`, n)
 //                           }
+
+//   state的用法    两种都可以，mutation也有两种
+//                       ...mapState({
+//                         aaa: state => state.find.aaa
+//                       })
+//                        ...mapState('find', {
+//                          aaa: state => state.aaa
+//                        })
+//

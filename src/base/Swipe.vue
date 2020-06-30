@@ -10,7 +10,7 @@
       :style="css"
     >
       <van-swipe-item v-for="(image, index) in data" :key="index">
-        <img v-lazy="image.pic" />
+        <img v-lazy="image.imageUrl" />
       </van-swipe-item>
     </van-swipe>
   </section>
