@@ -1,3 +1,4 @@
+import * as types from 'store/mutation-types.js'
 // 公用部分的方法放到vuex中
 const mutations = {
   // 判断设备是什么型号
@@ -23,6 +24,15 @@ const mutations = {
     } else {
       state.platform = 0
     }
+  },
+  // 处理登录状态
+  [types.LOGIN_CELLPHONE](state, data) {
+    console.log('我登录了')
+    // console.log(data.profile)
+    state.personalData = data.profile
+    // console.log(state.personalData)
+    document.cookie = data.cookie
+    // Vue.$router.push('/home')
   }
 }
 

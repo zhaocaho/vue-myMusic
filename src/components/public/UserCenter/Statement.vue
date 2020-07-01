@@ -1,6 +1,6 @@
 <template>
   <section :class="[this.$style.state, 'statement']">
-    做一个自己的音乐播放器
+    广告
   </section>
 </template>
 

@@ -10,12 +10,13 @@
       :style="css"
     >
       <van-swipe-item v-for="(image, index) in data" :key="index">
-        <img v-lazy="image.imageUrl" />
+        <img v-lazy="image[picUrl]" />
       </van-swipe-item>
     </van-swipe>
   </section>
 </template>
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'Swipe',
   data() {
@@ -62,6 +63,17 @@ export default {
           'https://img.yzcdn.cn/vant/apple-1.jpg',
           'https://img.yzcdn.cn/vant/apple-2.jpg'
         ]
+      }
+    }
+  },
+  computed: {
+    ...mapState(['platform']),
+    picUrl() {
+      switch (this.platform) {
+        case 0:
+          return 'imageUrl'
+        default:
+          return 'pic'
       }
     }
   }

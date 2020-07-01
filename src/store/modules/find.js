@@ -1,6 +1,6 @@
 import * as types from 'store/mutation-types.js'
 import API from '@/api'
-import { SUCCESS, useAxios } from '@/assets/js/common.js'
+import { SUCCESS, useAxiosGet } from '@/assets/js/common.js'
 import { Notify } from 'vant'
 
 const state = {
@@ -8,13 +8,14 @@ const state = {
 }
 const mutations = {}
 const actions = {
-  async [types.BANNER_LISTS]({ dispatch, rootState, commit }) {
+  async [types.BANNER_LISTS]({ dispatch, rootState, commit }, n) {
     const data = {
-      type: rootState.platform
+      // type: rootState.platform
+      type: n
     }
-    const result = await useAxios(API.find.BANNER_LIST, data)
+    const result = await useAxiosGet(API.find.BANNER_LIST, data)
     // console.log(result)
-    if (SUCCESS === 200) {
+    if (result.status === SUCCESS) {
       const bannerList = result.data.banners
       commit(types.BANNER_LISTS, bannerList)
     } else {

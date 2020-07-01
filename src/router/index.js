@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import Login from '@/components/Login/index.vue'
 import Home from '@/components/Home/index.vue'
 import Find from '@/components/Find/index.vue'
 import Cloud from '@/components/Cloud/index.vue'
@@ -8,7 +9,8 @@ import Video from '@/components/Video/index.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', redirect: '/home' },
+  { path: '/', redirect: '/login' },
+  { path: '/login', name: 'Login', component: Login },
   { path: '/home', name: 'Home', component: Home },
   { path: '/find', name: 'Find', component: Find },
   { path: '/cloud', name: 'Cloud', component: Cloud },

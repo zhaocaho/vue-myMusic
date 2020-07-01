@@ -7,7 +7,11 @@ import {
   Swipe,
   SwipeItem,
   Lazyload,
-  Notify
+  Notify,
+  Tabbar,
+  TabbarItem,
+  Form,
+  Field
 } from 'vant'
 
 Vue.use(Button)
@@ -18,3 +22,7 @@ Vue.use(Swipe)
 Vue.use(SwipeItem)
 Vue.use(Lazyload)
 Vue.use(Notify)
+Vue.use(Tabbar)
+Vue.use(TabbarItem)
+Vue.use(Form)
+Vue.use(Field)
