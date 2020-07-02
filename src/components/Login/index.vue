@@ -22,6 +22,13 @@
           to="/register/cellphone"
           >注册</van-button
         >
+        <van-button
+          size="small"
+          type="default"
+          class="visitor btnCommon"
+          to="/home"
+          >游客登录</van-button
+        >
       </div>
     </panel>
   </section>
@@ -59,7 +66,7 @@ export default {
   }
   .loginSelect {
     position: relative;
-    top: 60%;
+    top: 50%;
     @include list();
     align-items: center;
     .btnCommon {
@@ -79,6 +86,9 @@ export default {
     }
     .register {
       background-color: #3faf7d;
+    }
+    .visitor {
+      background-color: #ffca28;
     }
   }
 }
