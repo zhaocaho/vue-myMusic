@@ -38,7 +38,7 @@ export default {
     // this.getBanner()
     // console.log(this.platform)
     this.getBannerList(this.platform)
-    console.log(this.platform)
+    // console.log(this.platform)
   },
   methods: {
     // 获取轮播图数据
@@ -64,7 +64,7 @@ export default {
     })
   },
   mounted() {
-    console.log(this.bannerList)
+    // console.log(this.bannerList)
   }
 }
 </script>

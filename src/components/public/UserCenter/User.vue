@@ -1,7 +1,7 @@
 <template>
   <section :class="['user']">
     <!-- 立即登录 -->
-    <router-link to="/login" v-if="isLogin">
+    <router-link to="/login" v-if="!isLogin">
       <van-button
         color="linear-gradient(to right, #e21918, #ff4a4a)"
         round
@@ -56,31 +56,31 @@ export default {
     return {}
   },
   created() {
-    this.getLoginStatus()
+    // this.getLoginStatus()
     // this.getCookie()
   },
   methods: {
     //  获取是否登录状态
-    getLoginStatus() {
-      const params = {
-        phone: 18010672630,
-        password: 'Zc931103'
-      }
-      this.$http.post('/login/cellphone', params).then(result => {
-        console.log(result)
-      })
-    }
+    // getLoginStatus() {
+    //   const params = {
+    //     phone: 18010672630,
+    //     password: 'Zc931103'
+    //   }
+    //   this.$http.post('/login/cellphone', params).then(result => {
+    //     console.log(result)
+    //   })
+    // }
   },
   computed: {
-    ...mapState(['personalData']),
-    // 利用cookie判断是否已经登录
-    isLogin() {
-      if (document.cookie) {
-        return false
-      } else {
-        return true
-      }
-    }
+    ...mapState(['personalData', 'isLogin'])
+    // 利用cookie判断是否已经登录,,这里可能是网络问题，不好用
+    // isLogin() {
+    //   if (document.cookie) {
+    //     return false
+    //   } else {
+    //     return true
+    //   }
+    // }
   }
 }
 </script>

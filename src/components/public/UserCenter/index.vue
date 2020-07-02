@@ -4,6 +4,7 @@
       <statement></statement>
       <user></user>
       <shop></shop>
+      <setting></setting>
     </panel>
   </section>
 </template>
@@ -13,6 +14,7 @@ import Panel from '@/base/Panel.vue'
 import Statement from './Statement.vue'
 import User from './User.vue'
 import Shop from './Shop.vue'
+import Setting from './Setting.vue'
 export default {
   name: 'UserCenter',
   data() {
@@ -22,7 +24,8 @@ export default {
     Panel,
     Statement,
     User,
-    Shop
+    Shop,
+    Setting
   }
 }
 </script>

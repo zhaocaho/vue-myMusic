@@ -11,7 +11,12 @@ import {
   Tabbar,
   TabbarItem,
   Form,
-  Field
+  Field,
+  Loading,
+  PasswordInput,
+  NumberKeyboard,
+  Step,
+  Steps
 } from 'vant'
 
 Vue.use(Button)
@@ -26,3 +31,8 @@ Vue.use(Tabbar)
 Vue.use(TabbarItem)
 Vue.use(Form)
 Vue.use(Field)
+Vue.use(Loading)
+Vue.use(PasswordInput)
+Vue.use(NumberKeyboard)
+Vue.use(Step)
+Vue.use(Steps)

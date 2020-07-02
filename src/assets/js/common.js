@@ -13,7 +13,7 @@ export const SUCCESS = 200
 export function useAxiosGet(url, data) {
   return new Promise((resolve, reject) => {
     axios
-      .get(url, { params: data })
+      .get(url, { params: data } || {})
       .then(result => {
         resolve(result)
       })

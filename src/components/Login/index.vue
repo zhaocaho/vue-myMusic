@@ -1,75 +1,85 @@
 <template>
-  <section :class="['loginContain', 'login']">
+  <section class="login">
     <panel>
-      <van-form @submit="submit">
-        <van-field
-          v-model="data.phone"
-          name="电话号码"
-          label="电话号码"
-          placeholder="电话号码"
-          :rules="[
-            {
-              required: true,
-              message: '请填写正确的电话号码',
-              validator: phoneValidator
-            }
-          ]"
-        />
-        <van-field
-          v-model="data.password"
-          type="password"
-          name="密码"
-          label="密码"
-          placeholder="密码"
-          :rules="[{ required: true, message: '请填写密码' }]"
-        />
-        <div style="margin: 16px;">
-          <van-button round block type="info" native-type="submit">
-            提交
-          </van-button>
-        </div>
-      </van-form>
+      <!-- 电话登录 -->
+      <!-- <phone></phone> -->
+      <i class="longin_logo"></i>
+      <div class="loginSelect">
+        <van-button
+          size="small"
+          type="default"
+          class="phoneLogin btnCommon"
+          to="/login/cellphone"
+          >电话登录</van-button
+        >
+        <van-button size="small" type="default" class="mailLogin btnCommon"
+          >邮箱登录</van-button
+        >
+        <van-button
+          size="small"
+          type="default"
+          class="register btnCommon"
+          to="/register/cellphone"
+          >注册</van-button
+        >
+      </div>
     </panel>
   </section>
 </template>
+
 <script>
-import { mapActions } from 'vuex'
-import * as types from 'store/mutation-types.js'
+// import Phone from './Phone.vue'
 import Panel from '@/base/Panel.vue'
 export default {
   name: 'Login',
   components: {
+    // Phone,
     Panel
-  },
-  data() {
-    return {
-      data: {
-        phone: '',
-        password: ''
-      }
-    }
-  },
-  created() {},
-  methods: {
-    ...mapActions({
-      loginCellPhone: types.LOGIN_CELLPHONE
-    }),
-    // 手机校验
-    phoneValidator(val) {
-      const phoneReg = /^1[3456789]\d{9}$/
-      return phoneReg.test(val)
-    },
-    // 验证通过后登录并切换页面
-    submit() {
-      this.loginCellPhone(this.data)
-      // this.$router.push('/home')
-    }
-  },
-  mounted() {}
+  }
 }
 </script>
 <style lang="scss" scoped>
-.loginContain {
-  color: red;
+@import 'css/base.scss';
+.login {
+  height: 100%;
+  background-color: #e21918;
+  .longin_logo {
+    position: absolute;
+    display: block;
+    width: 0.3rem;
+    height: 0.3rem;
+    background-color: red;
+    border-radius: 50%;
+    background: url('../../assets/img/logo.png') no-repeat;
+    background-size: 0.3rem 0.3rem;
+    overflow: hidden;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .loginSelect {
+    position: relative;
+    top: 60%;
+    @include list();
+    align-items: center;
+    .btnCommon {
+      //   position: absolute;
+      //   left: 50%;
+      //   transform: translateX(-50%);
+      border-radius: 20px;
+      width: 1.8rem;
+      border: none;
+      margin-top: 0.1rem;
+    }
+    .phoneLogin {
+      color: #e21918;
+    }
+    .mailLogin {
+      background-color: #0288d1;
+    }
+    .register {
+      background-color: #3faf7d;
+    }
+  }
 }
 </style>

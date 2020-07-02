@@ -5,12 +5,16 @@ import Home from '@/components/Home/index.vue'
 import Find from '@/components/Find/index.vue'
 import Cloud from '@/components/Cloud/index.vue'
 import Video from '@/components/Video/index.vue'
+import Phone from '@/components/Login/Phone.vue'
+import Register from '@/components/Login/Register.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: '/login' },
   { path: '/login', name: 'Login', component: Login },
+  { path: '/login/cellphone', component: Phone, name: 'Phone' },
+  { path: '/register/cellphone', component: Register, name: 'Register' },
   { path: '/home', name: 'Home', component: Home },
   { path: '/find', name: 'Find', component: Find },
   { path: '/cloud', name: 'Cloud', component: Cloud },

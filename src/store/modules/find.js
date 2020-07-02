@@ -29,7 +29,7 @@ const getters = {}
 // 轮播图赋值
 mutations[types.BANNER_LISTS] = (state, result) => {
   state.bannerList = result
-  console.log(state.bannerList)
+  // console.log(state.bannerList)
 }
 // actions
 // 获取轮播图

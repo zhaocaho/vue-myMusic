@@ -25,14 +25,30 @@ const mutations = {
       state.platform = 0
     }
   },
-  // 处理登录状态
+  // 改变登录状态为true
+  loginSuccess(state) {
+    state.isLogin = true
+  },
+  // 登录中状态
+  loginIng(state) {
+    state.isLoading = true
+  },
+  // 处理登录内容
   [types.LOGIN_CELLPHONE](state, data) {
     console.log('我登录了')
     // console.log(data.profile)
     state.personalData = data.profile
     // console.log(state.personalData)
     document.cookie = data.cookie
-    // Vue.$router.push('/home')
+    this.commit('loginSuccess')
+  },
+  // 退出登录
+  [types.LOGOUT](state) {
+    state.isLogin = false
+  },
+  // 处理登录失败状态
+  loginError(state) {
+    state.isLoading = false
   }
 }
 
