@@ -71,8 +71,8 @@ export default {
     return {
       // 登录的账号密码
       data: {
-        phone: '',
-        password: ''
+        phone: 15682078775,
+        password: 'Zc931103'
       }
       // loading
       // isLoading: false
@@ -140,7 +140,7 @@ export default {
         position: relative;
         .forgetPassword {
           position: absolute;
-          top: 0.05rem;
+          top: 0.02rem;
           color: #d1d1d1;
         }
         .van-button {

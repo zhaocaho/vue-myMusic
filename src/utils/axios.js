@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-axios.defaults.baseURL = 'http://localhost:3000/'
+// axios.defaults.baseURL = 'http://localhost:3000/'
+axios.defaults.baseURL = 'https://daiwei.site/netease/'
 
 // http request 拦截器
 axios.interceptors.request.use(

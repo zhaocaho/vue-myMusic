@@ -8,6 +8,11 @@ import './plugins/vant.js'
 // 样式
 import '@/assets/css/globle.scss'
 import 'vant/lib/index.css'
+// 引入格式化时间组件函数
+import dataFormat from '@/assets/js/dataFormat'
+
+// 全局注册格式化时间函数
+Vue.filter('dataFormat', dataFormat)
 
 Vue.config.productionTip = false
 // 在Vue原型中加入$http属性为axios

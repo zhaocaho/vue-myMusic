@@ -10,6 +10,9 @@ export const CAPTCHA_VERIFY = 'CAPTCHA_VERIFY'
 // 注册或修改密码
 export const REGISTER_CELLPHONE = 'REGISTER_CELLPHONE'
 
+// home
+export const USER_DETAIL = 'USER_DETAIL'
+
 // find
 // 获取banner轮播图信息
 export const BANNER_LISTS = 'BANNER_LISTS'

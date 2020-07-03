@@ -19,6 +19,7 @@ const actions = {
   async [types.LOGOUT]({ commit }) {
     const result = await useAxiosPost(API.login.LOGOUT)
     console.log(result)
+    commit(types.LOGOUT)
   },
   // 发送验证码
   async [types.CAPTCHA_SEND]({ commit }, data) {
@@ -30,12 +31,23 @@ const actions = {
     console.log(result)
     if (result.data.code === SUCCESS) {
       commit(types.CAPTCHA_VERIFY)
+    } else {
+      Notify('网络出错')
     }
   },
   // 注册或修改密码
   async [types.REGISTER_CELLPHONE]({ commit }, data) {
-    const result = await useAxiosPost(API.login.REGISTER_CELLPHONE, data)
+    const result = await useAxiosPost(
+      API.login.REGISTER_CELLPHONE,
+      data,
+      '用户名格式错误或者已被占用'
+    )
     console.log(result)
+    if (result.data.code === SUCCESS) {
+      commit(types.LOGIN_CELLPHONE)
+    } else {
+      Notify('网络出错')
+    }
   }
 }
 

@@ -118,7 +118,7 @@ export default {
       span {
         // width: 0.3rem;
         // background-color: red;
-        width: 40px;
+        width: 0.4rem;
       }
     }
     i {

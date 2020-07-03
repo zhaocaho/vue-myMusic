@@ -11,10 +11,11 @@
       </van-button>
     </router-link>
     <!-- 已经登录的状态 -->
-    <div class="me" v-else>
+    <!-- <div class="me" v-else>
       <i></i>
       <span>{{ personalData.nickname }}</span>
-    </div>
+    </div> -->
+    <z-name :name="personalData.nickname" v-else></z-name>
     <!-- 我的消息等标签 -->
     <div class="my_ifo">
       <van-tabbar :fixed="false" :border="false">
@@ -49,9 +50,12 @@
 
 <script>
 import { mapState } from 'vuex'
+import ZName from '@/components/public/ZName.vue'
 export default {
   name: 'User',
-  components: {},
+  components: {
+    ZName
+  },
   data() {
     return {}
   },

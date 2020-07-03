@@ -13,7 +13,10 @@ const API = {
     REGISTER_CELLPHONE: '/register/cellphone'
   },
   // 我的页面
-  home: {},
+  home: {
+    // 用户详情
+    USER_DETAIL: '/user/detail'
+  },
   // 发现页面
   find: {
     // 轮播图

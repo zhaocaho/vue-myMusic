@@ -114,9 +114,9 @@ export default {
       // 发送验证码
       captchaSend: types.CAPTCHA_SEND,
       // 验证验证码
-      captchaVerify: types.CAPTCHA_VERIFY
+      captchaVerify: types.CAPTCHA_VERIFY,
       // 注册或修改密码
-      // registerCellphone: types.REGISTER_CELLPHONE
+      registerCellphone: types.REGISTER_CELLPHONE
     }),
     // 注册验证提交
     registerSubmit() {
@@ -153,12 +153,20 @@ export default {
     }
   },
   computed: {
-    ...mapState(['isCaptchaRight'])
+    ...mapState(['isCaptchaRight', 'isLogin'])
   },
   watch: {
+    // 验证码是否正确
     isCaptchaRight(newVal) {
       if (newVal) {
-        this.$toast('恭喜你注册失败了！接口无法调用，请下载网易云音乐重新注册')
+        this.registerCellphone(this.params)
+        // this.$toast('恭喜你注册失败了！接口无法调用，请下载网易云音乐重新注册')
+      }
+    },
+    // 判断是否登录成功，跳转到下一页
+    isLogin(newVal, oldVal) {
+      if (newVal) {
+        this.$router.push('/home')
       }
     }
   }

@@ -29,7 +29,7 @@ export function useAxiosGet(url, data) {
  * @param {String} url
  * @param {Object} data
  */
-export function useAxiosPost(url, data) {
+export function useAxiosPost(url, data, notice = '请检查您的网络') {
   return new Promise((resolve, reject) => {
     axios
       .post(url, data)
@@ -39,7 +39,7 @@ export function useAxiosPost(url, data) {
       .catch(err => {
         reject(err)
         console.log(err)
-        Notify('请检查您的网络')
+        Notify(notice)
       })
   })
 }

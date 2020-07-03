@@ -32,6 +32,9 @@ const mutations = {
   // 登录中状态
   loginIng(state) {
     state.isLoading = true
+    setTimeout(() => {
+      state.isLoading = false
+    }, 10000)
   },
   // 处理登录内容
   [types.LOGIN_CELLPHONE](state, data) {
@@ -45,6 +48,7 @@ const mutations = {
   // 退出登录
   [types.LOGOUT](state) {
     state.isLogin = false
+    state.home.userDetailData = {}
   },
   // 处理登录失败状态
   loginError(state) {
