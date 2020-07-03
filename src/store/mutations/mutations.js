@@ -49,6 +49,14 @@ const mutations = {
   // 处理登录失败状态
   loginError(state) {
     state.isLoading = false
+  },
+  // 验证验证码
+  [types.CAPTCHA_VERIFY](state) {
+    state.isCaptchaRight = true
+    setTimeout(() => {
+      console.log('我执行了')
+      state.isCaptchaRight = false
+    }, 10000)
   }
 }
 

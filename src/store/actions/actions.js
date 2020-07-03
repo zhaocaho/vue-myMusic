@@ -1,6 +1,6 @@
 import * as types from 'store/mutation-types.js'
 import API from '@/api'
-import { SUCCESS, useAxiosPost } from '@/assets/js/common.js'
+import { SUCCESS, useAxiosPost, useAxiosGet } from '@/assets/js/common.js'
 import { Notify } from 'vant'
 const actions = {
   // 电话登录
@@ -18,6 +18,23 @@ const actions = {
   // 退出登录
   async [types.LOGOUT]({ commit }) {
     const result = await useAxiosPost(API.login.LOGOUT)
+    console.log(result)
+  },
+  // 发送验证码
+  async [types.CAPTCHA_SEND]({ commit }, data) {
+    await useAxiosGet(API.login.CAPTCHA_SEND, data)
+  },
+  // 验证验证码
+  async [types.CAPTCHA_VERIFY]({ commit }, data) {
+    const result = await useAxiosGet(API.login.CAPTCHA_VERIFY, data)
+    console.log(result)
+    if (result.data.code === SUCCESS) {
+      commit(types.CAPTCHA_VERIFY)
+    }
+  },
+  // 注册或修改密码
+  async [types.REGISTER_CELLPHONE]({ commit }, data) {
+    const result = await useAxiosPost(API.login.REGISTER_CELLPHONE, data)
     console.log(result)
   }
 }

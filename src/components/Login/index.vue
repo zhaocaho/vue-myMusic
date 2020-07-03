@@ -12,7 +12,11 @@
           to="/login/cellphone"
           >电话登录</van-button
         >
-        <van-button size="small" type="default" class="mailLogin btnCommon"
+        <van-button
+          size="small"
+          type="default"
+          class="mailLogin btnCommon"
+          @click="mailLogin"
           >邮箱登录</van-button
         >
         <van-button
@@ -42,6 +46,11 @@ export default {
   components: {
     // Phone,
     Panel
+  },
+  methods: {
+    mailLogin() {
+      this.$toast('换电话登录吧！难得写')
+    }
   }
 }
 </script>

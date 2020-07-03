@@ -53,15 +53,27 @@
             placeholder="验证码"
           />
           <span>
-            <button type="button" v-if="!isSendcaptcha" @click="sendCaptcha">
+            <button
+              type="button"
+              v-if="!isSendcaptcha"
+              @click="sendCaptcha"
+              :style="{ backgroundColor: '#b5b5b5' }"
+            >
               发送验证码
             </button>
-            <button type="button" v-else :disabled="sendCaptchaAain">
+            <button
+              type="button"
+              v-else
+              :disabled="sendCaptchaAain"
+              :style="{ color: 'white', backgroundColor: '#b5b5b5' }"
+            >
               重发({{ time }})
             </button>
           </span>
         </div>
-        <button type="submit">注册</button>
+        <van-button type="submit" color="#3faf7d" class="submitBtn" size="small"
+          >注册</van-button
+        >
       </van-form>
     </panel>
   </section>
@@ -69,6 +81,8 @@
 
 <script>
 import Panel from '@/base/Panel.vue'
+import { mapState, mapActions } from 'vuex'
+import * as types from 'store/mutation-types.js'
 export default {
   name: 'Register',
   components: {
@@ -93,8 +107,24 @@ export default {
       sendCaptchaAain: true
     }
   },
+  created() {},
   methods: {
-    registerSubmit() {},
+    // 发送验证码的异步函数
+    ...mapActions({
+      // 发送验证码
+      captchaSend: types.CAPTCHA_SEND,
+      // 验证验证码
+      captchaVerify: types.CAPTCHA_VERIFY
+      // 注册或修改密码
+      // registerCellphone: types.REGISTER_CELLPHONE
+    }),
+    // 注册验证提交
+    registerSubmit() {
+      this.captchaVerify({
+        phone: this.params.phone,
+        captcha: this.params.captcha
+      })
+    },
     // 手机校验
     phoneValidator(val) {
       const phoneReg = /^1[3456789]\d{9}$/
@@ -107,6 +137,7 @@ export default {
     // 发送验证码
     sendCaptcha() {
       this.toggleiIsSendcaptcha()
+      this.captchaSend({ phone: this.params.phone })
       const timer = setInterval(() => {
         this.time -= 1
         if (this.time === 0) {
@@ -114,10 +145,21 @@ export default {
           this.toggleiIsSendcaptcha()
         }
       }, 1000)
+      this.time = 60
     },
     // 返回
     backLogin() {
       this.$router.go(-1)
+    }
+  },
+  computed: {
+    ...mapState(['isCaptchaRight'])
+  },
+  watch: {
+    isCaptchaRight(newVal) {
+      if (newVal) {
+        this.$toast('恭喜你注册失败了！接口无法调用，请下载网易云音乐重新注册')
+      }
     }
   }
 }
@@ -125,22 +167,33 @@ export default {
 <style lang="scss" scoped>
 @import 'css/base.scss';
 .register {
-}
-.captcha {
-  @include list(row);
-  align-items: center;
-  .van-field {
-    flex: 1;
-  }
-  span {
-    font-size: 0.1rem;
-    width: 0.6rem;
-    height: 0.2rem;
-    line-height: 0.2rem;
-    background-color: #e6e6e6;
-    border-radius: 5px;
-    text-align: center;
-    overflow: hidden;
+  .van-form {
+    position: relative;
+    .captcha {
+      @include list(row);
+      align-items: center;
+      .van-field {
+        flex: 1;
+      }
+      span {
+        font-size: 0.1rem;
+        width: 0.6rem;
+        height: 0.2rem;
+        line-height: 0.2rem;
+        background-color: #b5b5b5;
+        border-radius: 5px;
+        text-align: center;
+        overflow: hidden;
+      }
+    }
+    .submitBtn {
+      border-radius: 15px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0.1rem;
+      width: 0.8rem;
+    }
   }
 }
 </style>

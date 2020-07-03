@@ -16,7 +16,8 @@ import {
   PasswordInput,
   NumberKeyboard,
   Step,
-  Steps
+  Steps,
+  Toast
 } from 'vant'
 
 Vue.use(Button)
@@ -36,3 +37,4 @@ Vue.use(PasswordInput)
 Vue.use(NumberKeyboard)
 Vue.use(Step)
 Vue.use(Steps)
+Vue.use(Toast)

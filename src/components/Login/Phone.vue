@@ -35,7 +35,13 @@
         />
         <!-- 提交 -->
         <div style="margin: 16px;" class="submitBtn">
-          <div class="forgetPassword">忘记密码？</div>
+          <router-link
+            to="/register/cellphone"
+            class="forgetPassword"
+            tag="div"
+          >
+            忘记密码？
+          </router-link>
           <van-button
             size="small"
             round

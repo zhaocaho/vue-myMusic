@@ -5,6 +5,8 @@ const state = {
   isLogin: false,
   // 登录按钮loading状态
   isLoading: false,
+  // 验证码是否验证成功
+  isCaptchaRight: false,
   // 登录后的个人信息
   personalData: {}
 }

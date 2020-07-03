@@ -4,8 +4,13 @@ const API = {
     // 手机登录
     LOGIN_CELLPHONE: '/login/cellphone',
     // 退出登录
-    LOGOUT: '/logout'
-    // LOGOUT: '/login/status'
+    LOGOUT: '/logout',
+    // 发送验证码
+    CAPTCHA_SEND: '/captcha/sent',
+    // 验证验证码
+    CAPTCHA_VERIFY: '/captcha/verify',
+    // 注册或修改密码
+    REGISTER_CELLPHONE: '/register/cellphone'
   },
   // 我的页面
   home: {},
