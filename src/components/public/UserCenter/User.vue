@@ -15,7 +15,11 @@
       <i></i>
       <span>{{ personalData.nickname }}</span>
     </div> -->
-    <z-name :name="personalData.nickname" v-else></z-name>
+    <z-name
+      :name="personalData.nickname"
+      :bgcurl="personalData.avatarUrl"
+      v-else
+    ></z-name>
     <!-- 我的消息等标签 -->
     <div class="my_ifo">
       <van-tabbar :fixed="false" :border="false">

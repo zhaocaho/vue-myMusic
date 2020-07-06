@@ -1,6 +1,10 @@
 <template>
   <section class="z-name">
-    <i></i>
+    <i
+      :style="[
+        { background: `url(${bgcurl}) 0% 0% / 0.3rem 0.3rem no-repeat` }
+      ]"
+    ></i>
     <span :style="nameStyle">{{ name }}</span>
     <router-link to="/login" tag="em" v-if="showLogin">
       立即登录
@@ -11,10 +15,13 @@
 <script>
 export default {
   name: 'ZName',
+  data() {
+    return {}
+  },
   props: {
     name: {
       type: String,
-      default: '登录更多欢乐'
+      default: '眼眸泪'
     },
     // 字体的样式
     nameStyle: {
@@ -27,11 +34,19 @@ export default {
     showLogin: {
       type: Boolean,
       default: false
+    },
+    // 背景连接
+    bgcurl: {
+      // type: String,
+      // 当在给数据设置绝对路径或者是相对路径时应该使用 require 引入才能成功
+      // 我日你妈，背景图深坑。内联样式直接一次性写完，不然坑死人
+      default: require('../../assets/img/logo.png')
     }
   }
 }
 </script>
 <style lang="scss" scoped>
+// $bgcUrl: '~@/assets/img/logo.png';
 @import 'css/base.scss';
 .z-name {
   @include list(row);
@@ -42,9 +57,15 @@ export default {
   i {
     width: 0.3rem;
     height: 0.3rem;
-    background-color: red;
     border-radius: 50%;
-    background: url('../../assets/img/logo.png') no-repeat;
+    // background: url('~@/assets/img/logo.png') no-repeat;   这是可以的，加波浪
+    // background: url('../../assets/img/logo.png') no-repeat;
+    // @if 1 + 1 == 2 {
+    //   background: url($bgcUrl) no-repeat;
+    // }
+    // @if 5 < 3 {
+    //   background: url($bgcUrl);
+    // }
     background-size: 0.3rem 0.3rem;
     overflow: hidden;
   }

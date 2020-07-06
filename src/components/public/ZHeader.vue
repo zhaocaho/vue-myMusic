@@ -93,7 +93,7 @@ export default {
 @import 'css/base.scss';
 .sec {
   .nav {
-    position: fixed;
+    // position: fixed;
     width: 100%;
     height: 0.4rem;
     line-height: 0.4rem;

@@ -19,8 +19,6 @@ export default {
 
 <style>
 #app {
-  border-radius: 10px;
-  overflow: hidden;
   height: 100%;
 }
 </style>

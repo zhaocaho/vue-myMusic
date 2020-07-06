@@ -1,7 +1,9 @@
 <template>
-  <section class="find">
-    <z-logo></z-logo>
-    <z-header></z-header>
+  <section class="find_contain">
+    <div class="fin_logo">
+      <z-logo></z-logo>
+      <z-header></z-header>
+    </div>
     <panel>
       <Swipe :css="{ height: '150px' }" :data="bannerList"></Swipe>
     </panel>
@@ -70,9 +72,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.find {
+.find_contain {
+  .fin_logo {
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    width: 100%;
+    background-color: white;
+  }
   .panel {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     .swipe {
       // background-color: red;
       height: 150px;
