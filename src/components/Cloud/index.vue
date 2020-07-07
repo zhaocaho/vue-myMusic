@@ -4,7 +4,9 @@
       <z-logo></z-logo>
       <z-header></z-header>
     </div>
-    <panel>cloud</panel>
+    <panel>
+      video
+    </panel>
   </section>
 </template>
 

@@ -9,7 +9,12 @@
       <history :data="userDetailData" :showHistory="isLogin"></history>
     </panel>
     <panel class="white_contain">
-      <pic-layout :data="data" picProp="src" desProp="descrip"></pic-layout>
+      <pic-layout
+        :data="data"
+        picProp="src"
+        desProp="descrip"
+        picNum="2"
+      ></pic-layout>
     </panel>
   </section>
 </template>
@@ -72,13 +77,15 @@ export default {
   },
   created() {
     this.isGetUserDetail()
+    this.userRecord({ uid: 1428569889 })
   },
   mounted() {
-    console.log(this.userDetailData)
+    // console.log(this.userDetailData)
   },
   methods: {
     ...mapActions({
-      userDetail: types.USER_DETAIL
+      userDetail: types.USER_DETAIL,
+      userRecord: types.USER_RECORD
     }),
     // 能否获取用户详情(游客登录时候不需要)
     isGetUserDetail() {
@@ -124,7 +131,7 @@ export default {
     width: 100%;
   }
   .panel1 {
-    margin-top: 1rem;
+    margin-top: 0.9rem;
     .z-name {
       // background-color: red;
       color: white;

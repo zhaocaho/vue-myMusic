@@ -9,8 +9,15 @@
       :indicator-color="indicator.white"
       :style="css"
     >
-      <van-swipe-item v-for="(image, index) in data" :key="index">
-        <img v-lazy="image[picUrl]" />
+      <van-swipe-item
+        v-for="(image, index) in data"
+        :key="index"
+        :style="boxCss"
+      >
+        <!-- <div> -->
+        <img v-lazy="image[picUrl]" :style="imgCss" />
+        <slot v-if="imgCss.width">可以字定义内容</slot>
+        <!-- </div> -->
       </van-swipe-item>
     </van-swipe>
   </section>
@@ -52,6 +59,23 @@ export default {
     css: {
       type: Object,
       default() {
+        return {
+          width: '100%',
+          height: '150px'
+        }
+      }
+    },
+    // 盒子样式
+    boxCss: {
+      type: Object,
+      default() {
+        return {}
+      }
+    },
+    // 图片宽度
+    imgCss: {
+      type: Object,
+      default() {
         return {}
       }
     },
@@ -80,12 +104,20 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .swipe {
   //   background-color: red;
-  img {
-    width: 100%;
-    height: 100%;
+  .van-swipe {
+    // width: 50%;
+    .van-swipe-item {
+      display: flex;
+      align-items: center;
+      img {
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0 5px #1e1e1e;
+      }
+    }
   }
 }
 </style>

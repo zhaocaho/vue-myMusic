@@ -24,6 +24,10 @@ const actions = {
     } else {
       Notify('11')
     }
+  },
+  async [types.USER_RECORD]({ commit }, data) {
+    const result = await useAxiosGet(API.home.USER_RECORD, data)
+    console.log(result)
   }
 }
 const getters = {}

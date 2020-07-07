@@ -7,6 +7,7 @@ import Cloud from '@/components/Cloud/index.vue'
 import Video from '@/components/Video/index.vue'
 import Phone from '@/components/Login/Phone.vue'
 import Register from '@/components/Login/Register.vue'
+import Play from '@/components/Play/index.vue'
 
 Vue.use(VueRouter)
 
@@ -18,7 +19,8 @@ const routes = [
   { path: '/home', name: 'Home', component: Home },
   { path: '/find', name: 'Find', component: Find },
   { path: '/cloud', name: 'Cloud', component: Cloud },
-  { path: '/video', name: 'Video', component: Video }
+  { path: '/video', name: 'Video', component: Video },
+  { path: '/play', name: 'Play', component: Play }
   // {
   //   path: '/about',
   //   name: 'About',

@@ -7,7 +7,7 @@
     <div class="pic-content">
       <div
         class="pic-box"
-        v-for="(item, i) in data"
+        v-for="(item, i) in data.slice(0, Number(renderNum))"
         :key="i"
         :style="{ width }"
       >
@@ -24,6 +24,7 @@ export default {
   data() {
     return {}
   },
+  methods: {},
   computed: {
     // 图片宽度
     width() {
@@ -31,6 +32,7 @@ export default {
       return `${100 / n}%`
     }
   },
+  mounted() {},
   props: {
     // 标题名称
     title: {
@@ -55,8 +57,12 @@ export default {
     },
     // 一排放几张图
     picNum: {
-      type: String,
+      // type: String,
       default: '2'
+    },
+    // 渲染几条数据
+    renderNum: {
+      default: '99'
     }
   }
 }
@@ -69,6 +75,9 @@ export default {
     @include list(row);
     justify-content: space-between;
     align-items: center;
+    h3 {
+      margin-left: 0.1rem;
+    }
     span {
       border: 1px solid #f1f3f4;
       box-sizing: border-box;
@@ -80,7 +89,6 @@ export default {
   .pic-content {
     @include list(row);
     justify-content: flex-start;
-
     flex-wrap: wrap;
     .pic-box {
       // width: 30%;
@@ -89,14 +97,17 @@ export default {
       align-items: center;
       img {
         width: 90%;
+        box-shadow: 0 0 5px #1e1e1e;
       }
       span {
         width: 90%;
         font-size: 0.12rem;
+        line-height: 0.2rem;
         height: 0.4rem;
         // text-overflow: ellipsis;
         // white-space: nowrap;
         overflow: hidden;
+        color: #7e6a6c;
       }
     }
   }

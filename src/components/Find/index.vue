@@ -5,7 +5,7 @@
       <z-header></z-header>
     </div>
     <panel>
-      <Swipe :css="{ height: '150px' }" :data="bannerList"></Swipe>
+      <Swipe :data="bannerList"> </Swipe>
     </panel>
   </section>
 </template>

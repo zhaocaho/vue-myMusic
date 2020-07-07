@@ -15,7 +15,9 @@ const API = {
   // 我的页面
   home: {
     // 用户详情
-    USER_DETAIL: '/user/detail'
+    USER_DETAIL: '/user/detail',
+    // 获取用户播放记录
+    USER_RECORD: '/user/record'
   },
   // 发现页面
   find: {

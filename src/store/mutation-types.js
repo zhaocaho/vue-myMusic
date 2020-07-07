@@ -12,6 +12,7 @@ export const REGISTER_CELLPHONE = 'REGISTER_CELLPHONE'
 
 // home
 export const USER_DETAIL = 'USER_DETAIL'
+export const USER_RECORD = 'USER_RECORD'
 
 // find
 // 获取banner轮播图信息
