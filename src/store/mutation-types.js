@@ -17,3 +17,8 @@ export const USER_RECORD = 'USER_RECORD'
 // find
 // 获取banner轮播图信息
 export const BANNER_LISTS = 'BANNER_LISTS'
+
+// music
+// 获取音乐url
+export const SONG_URL = 'SONG_URL'
+export const SEARCH = 'SEARCH'

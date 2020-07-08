@@ -3,22 +3,32 @@
     <panel>
       <!-- 搜索框 -->
       <div :class="this.$style.searchIpt">
-        <input type="text" placeholder="请输入..." v-model="searchValue" />
+        <input
+          type="text"
+          placeholder="请输入..."
+          v-model="params.keywords"
+          @input="debounceChange"
+        />
         <i><van-icon name="friends-o"/></i>
       </div>
       <!-- 清除按钮 -->
       <van-icon
         name="close"
         class="searchClear"
-        v-if="searchValue"
+        v-if="params.keywords"
         @click="clearSearchValue"
       />
+      <p v-for="item in searchList" :key="item.id" @click="goPlay(item)">
+        {{ item.name }}
+      </p>
     </panel>
   </section>
 </template>
 
 <script>
 import Panel from '@/base/Panel.vue'
+import { mapMutations, mapActions } from 'vuex'
+import * as types from 'store/mutation-types.js'
 export default {
   name: 'Search',
   components: {
@@ -26,14 +36,51 @@ export default {
   },
   data() {
     return {
-      // 搜索框的值
-      searchValue: ''
+      params: {
+        // 搜索框的值
+        keywords: ''
+      },
+      //
+      timer: null
     }
   },
   methods: {
+    ...mapActions({
+      search: types.SEARCH,
+      getMUsicUrl: types.SONG_URL
+    }),
+    ...mapMutations({
+      getMUsicData: 'getMUsicData'
+    }),
     //   清楚搜索框数据
     clearSearchValue() {
-      this.searchValue = ''
+      this.params.keywords = ''
+    },
+    // 在输入框值的改变添加防抖函数
+    debounceChange() {
+      if (this.timer !== null) {
+        window.clearTimeout(this.timer)
+      }
+      this.timer = window.setTimeout(() => {
+        if (this.params.keywords.length) {
+          this.search(this.params)
+        }
+      }, 1000)
+    },
+    // 跳转到播放页面
+    goPlay(item) {
+      console.log(item)
+      this.getMUsicData(item)
+      this.getMUsicUrl(item.id)
+      this.$router.push('/play')
+    }
+  },
+  computed: {
+    searchData() {
+      return this.$store.state.music.searchData
+    },
+    searchList() {
+      return this.$store.state.music.searchList
     }
   }
 }

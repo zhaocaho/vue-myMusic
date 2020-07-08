@@ -23,6 +23,11 @@ const API = {
   find: {
     // 轮播图
     BANNER_LIST: '/banner'
+  },
+  // music界面
+  music: {
+    SONG_URL: '/song/url',
+    SEARCH: '/search'
   }
 }
 

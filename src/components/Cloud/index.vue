@@ -20,7 +20,8 @@ export default {
     ZLogo,
     ZHeader,
     Panel
-  }
+  },
+  methods: {}
 }
 </script>
 

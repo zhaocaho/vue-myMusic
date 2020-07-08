@@ -5,6 +5,7 @@ import mutations from 'store/mutations/mutations.js'
 import actions from 'store/actions/actions.js'
 import find from 'store/modules/find.js'
 import home from 'store/modules/home.js'
+import music from 'store/modules/music.js'
 
 Vue.use(Vuex)
 
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   actions,
   modules: {
     home,
-    find
+    find,
+    music
   }
 })

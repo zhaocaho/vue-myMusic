@@ -1,7 +1,7 @@
 <template>
   <section class="paly_title">
     <div>
-      <van-icon name="arrow-left" size=".25rem" />
+      <van-icon name="arrow-left" size=".25rem" @click="goBack" />
       <div>
         <p>无期</p>
         <span>光头华夏></span>
@@ -14,7 +14,13 @@
 </template>
 <script>
 export default {
-  name: 'PlayTitle'
+  name: 'PlayTitle',
+  methods: {
+    // 返回上一级
+    goBack() {
+      this.$router.go(-1)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>

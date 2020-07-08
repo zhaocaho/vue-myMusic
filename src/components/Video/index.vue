@@ -3,6 +3,7 @@
     <div class="video_logo">
       <z-logo></z-logo>
       <z-header></z-header>
+      <z-player></z-player>
     </div>
     <panel>
       video
@@ -13,26 +14,32 @@
 <script>
 import ZLogo from '@/components/public/ZLogo.vue'
 import ZHeader from '@/components/public/ZHeader.vue'
+import ZPlayer from '@/components/public/ZPlayer.vue'
 import Panel from '@/base/Panel.vue'
+import { mapActions } from 'vuex'
 export default {
   name: 'Video',
   components: {
     ZLogo,
     ZHeader,
+    ZPlayer,
     Panel
   },
   created() {
-    this.getData()
+    // this.getData()
+    this.getUrl(398599)
   },
   methods: {
     getData() {
-      console.log('1')
       this.$http
-        .get('/user/record', { params: { uid: 1428569889 } })
+        .get('/search', { params: { keywords: '海阔天空' } })
         .then(result => {
           console.log(result)
         })
-    }
+    },
+    ...mapActions({
+      getUrl: 'SONG_URL'
+    })
   }
 }
 </script>
