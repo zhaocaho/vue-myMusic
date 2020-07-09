@@ -39,6 +39,7 @@
       closeable
       close-icon="arrow-left"
       close-icon-position="top-left"
+      @close="clearSearchList"
     >
       <search></search>
     </van-popup>
@@ -48,6 +49,7 @@
 <script>
 import UserCenter from '@/components/public/UserCenter/index.vue'
 import Search from '@/components/public/Search/index.vue'
+import * as types from 'store/mutation-types.js'
 export default {
   name: 'ZHeader',
   components: {
@@ -71,6 +73,11 @@ export default {
     //
     toggleSearch() {
       this.searchVisible = true
+    },
+    // 清楚搜索列表
+    clearSearchList() {
+      this.$store.commit(types.SEARCH, [])
+      this.$store.commit('changeSearchState', false)
     }
   },
   props: {

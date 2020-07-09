@@ -26,13 +26,21 @@ export default {
     Panel
   },
   created() {
-    // this.getData()
-    this.getUrl(398599)
+    this.getData()
+    // this.getData1()
+    // this.getUrl(398599)
   },
   methods: {
     getData() {
+      this.$http.get('/search/hot/detail').then(result => {
+        console.log(result)
+      })
+    },
+    getData1() {
       this.$http
-        .get('/search', { params: { keywords: '海阔天空' } })
+        .get('/search', {
+          params: { keywords: '海阔' }
+        })
         .then(result => {
           console.log(result)
         })

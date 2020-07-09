@@ -12,12 +12,17 @@ const state = {
   // 搜索的数据，包括hasMore(Boolean),songCount(总数),songs(歌曲列表)
   searchData: {},
   // 搜索列表
-  searchList: []
+  searchList: [],
+  // 搜索建议列表
+  searchSuggestList: [],
+  // 是否已经搜索
+  // isSearch: false,
+  // 是否已经搜索的状态
+  searchState: false
 }
 const mutations = {
   // 搜索
   [types.SEARCH](state, data) {
-    console.log(data)
     state.searchData = data
     state.searchList = data.songs
   },
@@ -28,6 +33,18 @@ const mutations = {
   // 获取音乐url
   [types.SONG_URL](state, data) {
     state.playUrl = data.data[0].url
+  },
+  // 搜索建议
+  [types.SEARCH_SUGGEST](state, data) {
+    state.searchSuggestList = data.allMatch
+  },
+  // 是否已经搜索
+  // changeIsSearch(state) {
+  //   state.isSearch = !state.isSearch
+  // }
+  // 改变状态
+  changeSearchState(state, data) {
+    state.searchState = data
   }
 }
 const actions = {
@@ -50,6 +67,18 @@ const actions = {
       // console.log(result.data.result)
       commit(types.SEARCH, result.data.result)
       // dispatch(types.SONG_URL, result.data.result.songs.id)
+    }
+  },
+  // 搜索建议
+  async [types.SEARCH_SUGGEST]({ commit }, data) {
+    const suggestParams = {
+      type: 'mobile',
+      ...data
+    }
+    const result = await useAxiosGet(API.music.SEARCH_SUGGEST, suggestParams)
+    console.log(result)
+    if (result.data.code === SUCCESS) {
+      commit(types.SEARCH_SUGGEST, result.data.result)
     }
   }
 }

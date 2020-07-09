@@ -21,4 +21,7 @@ export const BANNER_LISTS = 'BANNER_LISTS'
 // music
 // 获取音乐url
 export const SONG_URL = 'SONG_URL'
+// 搜索
 export const SEARCH = 'SEARCH'
+// 搜索建议
+export const SEARCH_SUGGEST = 'SEARCH_SUGGEST'

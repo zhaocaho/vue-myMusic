@@ -26,8 +26,12 @@ const API = {
   },
   // music界面
   music: {
+    // 获取音乐url
     SONG_URL: '/song/url',
-    SEARCH: '/search'
+    // 搜索
+    SEARCH: '/search',
+    // 搜索建议
+    SEARCH_SUGGEST: '/search/suggest'
   }
 }
 
