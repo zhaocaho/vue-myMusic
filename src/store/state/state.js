@@ -8,7 +8,9 @@ const state = {
   // 验证码是否验证成功
   isCaptchaRight: false,
   // 登录后的个人信息
-  personalData: {}
+  personalData: {},
+  // 选择audio
+  audio: ''
 }
 
 export default state

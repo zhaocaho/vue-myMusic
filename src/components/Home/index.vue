@@ -3,6 +3,7 @@
     <div class="home_logo">
       <z-logo :color="'white'"></z-logo>
       <z-header color="white"></z-header>
+      <z-player></z-player>
     </div>
     <panel class="panel1">
       <z-name :showLogin="!isLogin" :name="nickname" :bgcurl="bgcUrl"></z-name>
@@ -22,6 +23,7 @@
 <script>
 import ZLogo from '@/components/public/ZLogo.vue'
 import ZHeader from '@/components/public/ZHeader.vue'
+import ZPlayer from '@/components/public/ZPlayer.vue'
 import Panel from '@/base/Panel.vue'
 import ZName from '@/components/public/ZName.vue'
 import History from './History.vue'
@@ -33,6 +35,7 @@ export default {
   components: {
     ZLogo,
     ZHeader,
+    ZPlayer,
     Panel,
     ZName,
     History,

@@ -7,8 +7,9 @@ const state = {
   // 音乐id,名字那些
   musicData: '',
   // 音乐连接
-  playUrl:
-    'http://m8.music.126.net/20200708145406/d95a71d393bad533392a90d22ad0de01/ymusic/e23b/4394/b8d6/41653f743c00064d4f40c90875e1ebb8.mp3',
+  playUrl: '',
+  // 'http://m8.music.126.net/20200708145406/d95a71d393bad533392a90d22ad0de01/ymusic/e23b/4394/b8d6/41653f743c00064d4f40c90875e1ebb8.mp3',
+  // 'https://music.163.com/song/media/outer/url?id=398599.mp3',
   // 搜索的数据，包括hasMore(Boolean),songCount(总数),songs(歌曲列表)
   searchData: {},
   // 搜索列表
@@ -18,7 +19,9 @@ const state = {
   // 是否已经搜索
   // isSearch: false,
   // 是否已经搜索的状态
-  searchState: false
+  searchState: false,
+  // 音乐是否播放或者暂停
+  musicPlay: false
 }
 const mutations = {
   // 搜索
@@ -29,10 +32,16 @@ const mutations = {
   // 获取音乐id
   getMUsicData(state, data) {
     state.musicData = data
+    window.localStorage.setItem('musicData', JSON.stringify(state.musicData))
   },
   // 获取音乐url
-  [types.SONG_URL](state, data) {
-    state.playUrl = data.data[0].url
+  // [types.SONG_URL](state, data) {
+  //   state.playUrl = data.data[0].url
+  // },
+  [types.SONG_URL](state, id) {
+    state.playUrl = `https://music.163.com/song/media/outer/url?id=${id}.mp3 `
+    const historyUrl = state.playUrl
+    window.localStorage.setItem('url', JSON.stringify(historyUrl))
   },
   // 搜索建议
   [types.SEARCH_SUGGEST](state, data) {
@@ -45,6 +54,10 @@ const mutations = {
   // 改变状态
   changeSearchState(state, data) {
     state.searchState = data
+  },
+  // 改变播放或暂停
+  changeMusicPlay(state, data) {
+    state.musicPlay = data
   }
 }
 const actions = {
@@ -62,7 +75,7 @@ const actions = {
   // 搜索
   async [types.SEARCH]({ commit, dispatch }, data) {
     const result = await useAxiosGet(API.music.SEARCH, data)
-    // console.log(result)
+    console.log(result)
     if (result.data.code === SUCCESS) {
       // console.log(result.data.result)
       commit(types.SEARCH, result.data.result)

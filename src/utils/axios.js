@@ -1,4 +1,6 @@
 import axios from 'axios'
+// 引入nprogress的JS和css文件
+import NProgress from 'nprogress'
 
 // axios.defaults.baseURL = 'http://localhost:3000/'
 axios.defaults.baseURL = 'https://daiwei.site/netease/'
@@ -7,7 +9,7 @@ axios.defaults.baseURL = 'https://daiwei.site/netease/'
 axios.interceptors.request.use(
   config => {
     // 进度条(nprogress)配置在请求拦截器
-    //   NProgress.start()
+    NProgress.start()
     return config
   },
   err => {
@@ -18,7 +20,7 @@ axios.interceptors.request.use(
 // axios响应拦截器
 axios.interceptors.response.use(
   function(response) {
-    // NProgress.done() // 设置加载进度条(结束..)
+    NProgress.done() // 设置加载进度条(结束..)
     return response
   },
   function(error) {

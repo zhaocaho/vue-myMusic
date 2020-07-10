@@ -7,7 +7,12 @@
       </div>
       <div class="box">
         <div class="content">
-          <span v-for="(item, i) in historyList" :key="i">{{ item }}</span>
+          <span
+            v-for="(item, i) in historyList"
+            :key="i"
+            @click="searchHistory(item)"
+            >{{ item }}</span
+          >
         </div>
       </div>
     </div>
@@ -25,6 +30,8 @@
 </template>
 
 <script>
+import { mapMutations, mapActions } from 'vuex'
+import * as types from 'store/mutation-types.js'
 export default {
   name: 'HistoryRecord',
   components: {},
@@ -38,6 +45,12 @@ export default {
     this.getHistoryList()
   },
   methods: {
+    ...mapActions({
+      search: types.SEARCH
+    }),
+    ...mapMutations({
+      changeSearchState: 'changeSearchState'
+    }),
     //   获取历史记录
     getHistoryList() {
       this.historyList = JSON.parse(window.localStorage.getItem('historyList'))
@@ -47,6 +60,11 @@ export default {
     deleteHistory() {
       window.localStorage.removeItem('historyList')
       this.getHistoryList()
+    },
+    // 点击历史进行搜索
+    searchHistory(item) {
+      this.search({ keywords: item })
+      this.changeSearchState(true)
     }
   },
   computed: {}

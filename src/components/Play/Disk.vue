@@ -1,13 +1,19 @@
 <template>
   <section class="play_disk">
     <div class="play_cicle">
-      <img src="@/assets/img/logo.png" alt="" />
+      <img src="@/assets/img/logo.png" :class="musicPlay ? '' : 'pause'" />
     </div>
   </section>
 </template>
 <script>
 export default {
-  name: 'Disk'
+  name: 'Disk',
+  computed: {
+    // 音乐播放的状态
+    musicPlay() {
+      return this.$store.state.music.musicPlay
+    }
+  }
 }
 </script>
 
@@ -31,7 +37,7 @@ export default {
     img {
       width: 100%;
       height: 100%;
-      animation: imgMove 5s infinite linear;
+      animation: imgMove 15s infinite linear;
     }
   }
 }
@@ -45,5 +51,10 @@ export default {
   100% {
     transform: rotate(360deg);
   }
+}
+
+// 动画暂停
+.pause {
+  animation-play-state: paused !important;
 }
 </style>

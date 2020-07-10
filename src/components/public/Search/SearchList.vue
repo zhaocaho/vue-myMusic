@@ -6,16 +6,18 @@
   </section>
 </template>
 <script>
-import { mapMutations, mapActions } from 'vuex'
+import { mapMutations } from 'vuex'
 import * as types from 'store/mutation-types.js'
 export default {
   name: 'SearchList',
   methods: {
-    ...mapActions({
-      getMUsicUrl: types.SONG_URL
-    }),
+    // ...mapActions({
+    //   getMUsicUrl: types.SONG_URL
+    // }),
     ...mapMutations({
-      getMUsicData: 'getMUsicData'
+      getMUsicData: 'getMUsicData',
+      getMUsicUrl: types.SONG_URL,
+      changeMusicPlay: 'changeMusicPlay'
     }),
     // 跳转到播放页面
     goPlay(item) {
@@ -23,6 +25,7 @@ export default {
       this.getMUsicData(item)
       this.getMUsicUrl(item.id)
       this.$router.push('/play')
+      this.changeMusicPlay(true)
     }
   },
   computed: {

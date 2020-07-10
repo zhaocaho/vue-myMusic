@@ -3,6 +3,7 @@
     <div class="fin_logo">
       <z-logo></z-logo>
       <z-header></z-header>
+      <z-player></z-player>
     </div>
     <panel>
       <Swipe :data="bannerList"> </Swipe>
@@ -13,6 +14,7 @@
 <script>
 import ZLogo from '@/components/public/ZLogo.vue'
 import ZHeader from '@/components/public/ZHeader.vue'
+import ZPlayer from '@/components/public/ZPlayer.vue'
 import Panel from '@/base/Panel.vue'
 import Swipe from '@/base/Swipe.vue'
 import { mapState, mapActions } from 'vuex'
@@ -22,6 +24,7 @@ export default {
   components: {
     ZLogo,
     ZHeader,
+    ZPlayer,
     Panel,
     Swipe
   },

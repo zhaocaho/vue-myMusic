@@ -3,8 +3,8 @@
     <div>
       <van-icon name="arrow-left" size=".25rem" @click="goBack" />
       <div>
-        <p>无期</p>
-        <span>光头华夏></span>
+        <p>{{ name }}</p>
+        <span>{{ author }}></span>
       </div>
     </div>
     <span>
@@ -19,6 +19,16 @@ export default {
     // 返回上一级
     goBack() {
       this.$router.go(-1)
+    }
+  },
+  props: {
+    name: {
+      type: String,
+      default: '歌曲'
+    },
+    author: {
+      type: String,
+      default: '佚名'
     }
   }
 }
@@ -38,8 +48,6 @@ export default {
       @include list();
       align-items: flex-start;
       margin-left: 0.1rem;
-      p {
-      }
       span {
         font-size: 0.1rem;
         color: #6e6e6e;

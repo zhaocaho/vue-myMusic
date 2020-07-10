@@ -125,9 +125,9 @@ export default {
       // const c = JSON.parse(window.localStorage.getItem('ceshi'))
       // window.localStorage.setItem('ceshi', b)
       // console.log(c)
-      this.historyList.push(this.params.keywords)
+      this.historyList.unshift(this.params.keywords)
       if (this.historyList.length > 10) {
-        this.historyList.shift()
+        this.historyList.pop()
       }
       const history = JSON.stringify(this.historyList)
       window.localStorage.setItem('historyList', history)

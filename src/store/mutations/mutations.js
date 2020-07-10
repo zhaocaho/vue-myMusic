@@ -61,6 +61,11 @@ const mutations = {
       console.log('我执行了')
       state.isCaptchaRight = false
     }, 10000)
+  },
+  // 选择audio元素
+  getAudio(state, el) {
+    console.log(el)
+    state.audio = el
   }
 }
 
